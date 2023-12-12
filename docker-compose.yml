@@ -10,11 +10,11 @@ services:
       - ./server/apache2.conf:/etc/apache2/apache2.conf
       - ./server/php.ini:/usr/local/etc/php/php.ini
     depends_on:
-      - postgres
+      - postgres_host
     networks:
       - mynetwork
 
-  postgres:
+  postgres_host:
     image: postgres
     environment:
       POSTGRES_USER: fadec_user
@@ -31,7 +31,7 @@ services:
     ports:
       - "8080:80"
     depends_on:
-      - postgres
+      - postgres_host
     networks:
       - mynetwork
 
